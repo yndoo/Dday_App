@@ -38,12 +38,6 @@ class MainActivity : AppCompatActivity() {
                     startDate = "${year}${month+1}${dayOfMonth}"
                     Log.d("날짜확인1",startDate)
                     calendar_start.set(year, month+1, dayOfMonth)
-                    calendar_start.apply {
-                        set(Calendar.HOUR_OF_DAY, 0)
-                        set(Calendar.MINUTE, 0)
-                        set(Calendar.SECOND, 0)
-                        set(Calendar.MILLISECOND, 0)
-                    }
                 }
 
             }, year, month, day)
@@ -61,16 +55,8 @@ class MainActivity : AppCompatActivity() {
                     endDate = "${year}${month+1}${dayOfMonth}"
                     Log.d("날짜확인2",endDate)
                     calendar_end.set(year, month+1, dayOfMonth)
-                    calendar_end.apply {
-                        set(Calendar.HOUR_OF_DAY, 0)
-                        set(Calendar.MINUTE, 0)
-                        set(Calendar.SECOND, 0)
-                        set(Calendar.MILLISECOND, 0)
-                    }
-                    val finalDate = TimeUnit.MILLISECONDS.toDays(calendar_end.timeInMillis - calendar_start.timeInMillis) + 1
-                    //val finalDate = (calendar_end.timeInMillis - calendar_start.timeInMillis)/(24*60*60*1000) + 1
-                    Log.d("@@@",TimeUnit.MILLISECONDS.toDays(calendar_start.timeInMillis).toString())
-                    Log.d("@@@",TimeUnit.MILLISECONDS.toDays(calendar_end.timeInMillis).toString())
+
+                    val finalDate = TimeUnit.MILLISECONDS.toDays(calendar_end.timeInMillis - calendar_start.timeInMillis)
 
                     findViewById<TextView>(R.id.ddayText).setText("D+" + finalDate.toString())
                 }

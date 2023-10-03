@@ -37,7 +37,7 @@ class MainActivity : AppCompatActivity() {
                 override fun onDateSet(view: DatePicker?, year: Int, month: Int, dayOfMonth: Int) {
                     startDate = "${year}${month+1}${dayOfMonth}"
                     Log.d("날짜확인1",startDate)
-                    calendar_start.set(year, month+1, dayOfMonth)
+                    calendar_start.set(year, month, dayOfMonth)
                 }
 
             }, year, month, day)
@@ -54,9 +54,9 @@ class MainActivity : AppCompatActivity() {
                 override fun onDateSet(view: DatePicker?, year: Int, month: Int, dayOfMonth: Int) {
                     endDate = "${year}${month+1}${dayOfMonth}"
                     Log.d("날짜확인2",endDate)
-                    calendar_end.set(year, month+1, dayOfMonth)
+                    calendar_end.set(year, month, dayOfMonth)
 
-                    val finalDate = TimeUnit.MILLISECONDS.toDays(calendar_end.timeInMillis - calendar_start.timeInMillis)
+                    val finalDate = TimeUnit.MILLISECONDS.toDays(calendar_end.timeInMillis - calendar_start.timeInMillis)+1
 
                     findViewById<TextView>(R.id.ddayText).setText("D+" + finalDate.toString())
                 }
